@@ -45,8 +45,7 @@
         </div>
 
       <button
-        class='button is-primary'
-        v-on:click="updateUser">
+        class='button is-primary'>
         Сохранить
       </button>
 

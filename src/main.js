@@ -3,8 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VTooltip from 'v-tooltip'
+import Copy from 'v-copy'
+import './assets/sass/main.scss'
 
-require('./assets/sass/main.scss')
+Vue.use(Copy)
+Vue.use(VTooltip)
 
 Vue.config.productionTip = false
 

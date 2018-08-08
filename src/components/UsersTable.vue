@@ -3,15 +3,15 @@
     <component
       v-on:editUser="editUser"
       v-bind:users="users"
-      v-bind:is='visibleComponent'
-      v-if='visible == "list"'></component>
+      v-bind:is="visibleComponent"
+      v-if="visible == 'list'"></component>
 
     <component
-      v-bind:is='visibleComponent'
-      v-bind:editingUser='editingUser'
-      v-on:updateUser='updateUser'
-      v-on:returnToList='visible = "list"'
-      v-if='visible == "editUser"'></component>
+      v-bind:is="visibleComponent"
+      v-bind:editingUser="editingUser"
+      v-on:updateUser="updateUser"
+      v-on:returnToList="visible = 'list'"
+      v-if="visible == 'editUser'"></component>
   </div>
 </template>
 
