@@ -1,3 +1,5 @@
+const isProduction = process.env.NODE_ENV === 'production'
+
 export default {
-  dataUrl: 'http://localhost:3000/'
+  dataUrl: isProduction ? '/' : 'http://localhost:3000/'
 }
