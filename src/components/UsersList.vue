@@ -18,6 +18,7 @@
           <th>Фамилия</th>
           <th>Отчество</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -27,6 +28,7 @@
           <td>{{ user.familyName | toUpperCase}}</td>
           <td>{{ user.lastName | toUpperCase}}</td>
           <td><button v-copy="userForCopy(user)">copy</button></td>
+          <td><button v-on:click="editUser(user)">edit</button></td>
         </tr>
       </tbody>
     </table>
@@ -58,6 +60,9 @@ export default {
     },
     userForCopy (user) {
       return user.firstName + ' ' + user.familyName + ' ' + user.lastName
+    },
+    editUser (user) {
+      this.$emit('editUser', user)
     }
   },
   computed: {

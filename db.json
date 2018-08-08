@@ -1,9 +1,39 @@
 {
   "users": [
-    { "id": 1, "firstName": "Petr", "familyName": "Petrov", "lastName": "Petrovich", "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" },
-    { "id": 2, "firstName": "Ivan", "familyName": "Ivanova", "lastName": "Petrovich", "avatar": "" },
-    { "id": 3, "firstName": "Sergey", "familyName": "Sergeev", "lastName": "Petrovich", "avatar": "" },
-    { "id": 4, "firstName": "Oleg", "familyName": "Olegov", "lastName": "Petrovich", "avatar": "" },
-    { "id": 5, "firstName": "Alexander", "familyName": "Alexandrov", "lastName": "Petrovich", "avatar": "" }
+    {
+      "id": 1,
+      "firstName": "AAA",
+      "familyName": "Petrov",
+      "lastName": "Petrovich",
+      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+    },
+    {
+      "id": 2,
+      "firstName": "Ivan",
+      "familyName": "Ivanova",
+      "lastName": "Petrovich",
+      "avatar": ""
+    },
+    {
+      "id": 3,
+      "firstName": "Sergey",
+      "familyName": "Sergeev",
+      "lastName": "Petrovich",
+      "avatar": ""
+    },
+    {
+      "id": 4,
+      "firstName": "Oleg",
+      "familyName": "Olegov",
+      "lastName": "Petrovich",
+      "avatar": ""
+    },
+    {
+      "id": 5,
+      "firstName": "Alexander",
+      "familyName": "Alexandrov",
+      "lastName": "Petrovich",
+      "avatar": ""
+    }
   ]
 }
