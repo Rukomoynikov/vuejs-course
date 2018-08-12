@@ -67,7 +67,7 @@ export default {
     },
     userForCopy (user) {
       return user.firstName + ' ' + user.familyName + ' ' + user.lastName
-    },
+    }
   },
   computed: {
     usersCount () {

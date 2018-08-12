@@ -1,7 +1,6 @@
 <template>
   <div class="about">
-    PageAbout
-    <h1>asfasf</h1>
+    Страница о проекте
   </div>
 </template>
 

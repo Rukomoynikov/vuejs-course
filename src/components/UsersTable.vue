@@ -18,7 +18,7 @@
 <script>
 import UsersList from '@/components/UsersList'
 import UserForm from '@/components/UserForm'
-import axios from 'axios'
+import {HTTP} from '@/utilities/http'
 
 import utilities from '@/utilities/utilities'
 
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     loadUsers () {
-      axios
+      HTTP
         .get(utilities.dataUrl + 'users')
         .then((response) => {
           this.users = response.data
