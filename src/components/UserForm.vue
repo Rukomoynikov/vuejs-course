@@ -2,14 +2,22 @@
   <div>
       <h1 class="title">Редактирование пользователя</h1>
 
-      <button
+      <router-link :to="{ name: 'UsersTable' }">
+        <button
+        type='button'
+        class='button'>
+          Вернуться в список пользователей
+        </button>
+      </router-link>
+
+      <!-- <button
         type='button'
         class='button'
         v-on:click="returnToList">
         Вернуться в список пользователей
-      </button>
+      </button> -->
 
-      <form v-on:submit.prevent='updateUser'>
+      <form v-on:submit.prevent='updateUser' v-show="user != null">
 
         <div class="field">
           <label class="label">First tName</label>
@@ -17,19 +25,7 @@
             <input
               class="input"
               type="text"
-              v-bind:value='user.firstName'
-              v-on:input="user.firstName = $event.target.value" />
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Family Name</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              v-bind:value='user.familyName'
-              v-on:input="user.familyName = $event.target.value" />
+              v-model='user.name.first' />
           </div>
         </div>
 
@@ -39,8 +35,7 @@
             <input
               class="input"
               type="text"
-              v-bind:value='user.lastName'
-              v-on:input="user.lastName = $event.target.value" />
+              v-model='user.name.last' />
           </div>
         </div>
 
@@ -59,33 +54,26 @@ import utilities from '@/utilities/utilities'
 
 export default {
   name: 'UserForm',
-  props: {
-    editingUser: {
-      required: true,
-      type: Number
-    }
-  },
   mounted () {
+    this.userID = this.$route.params.id
     this.loadUser()
   },
   data () {
     return {
+      userID: null,
       user: {}
     }
   },
   methods: {
     loadUser () {
-      axios.get(utilities.dataUrl + `users/${this.editingUser}`).then((response) => {
+      axios.get(utilities.dataUrl + `users/${this.userID}`).then((response) => {
         this.user = response.data
       })
-    },
-    returnToList () {
-      this.$emit('returnToList')
     },
     updateUser () {
       const params = this.user
 
-      axios.put(utilities.dataUrl + `users/${this.editingUser}`, params).then((response) => {
+      axios.put(utilities.dataUrl + `users/${this.userID}`, params).then((response) => {
         alert('Пользователь сохраненён')
         this.$emit('updateUser', this.user)
       })

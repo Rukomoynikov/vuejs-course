@@ -15,19 +15,27 @@
           <th>Аватар</th>
           <th>Имя</th>
           <th>Фамилия</th>
-          <th>Отчество</th>
           <th></th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr v-bind:key='user.id' v-for="user in users">
-          <td><img width='40px' v-bind:src=getUserAvatar(user.avatar) /></td>
-          <td>{{ user.firstName | toUpperCase }}</td>
-          <td>{{ user.familyName | toUpperCase}}</td>
-          <td>{{ user.lastName | toUpperCase}}</td>
-          <td><button v-copy="userForCopy(user)">copy</button></td>
-          <td><button v-on:click="editUser(user)">edit</button></td>
+          <td><img width='40px' v-bind:src=getUserAvatar(user.picture) /></td>
+          <td>{{ user.name.first  | toUpperCase }}</td>
+          <td>{{ user.name.last | toUpperCase}}</td>
+          <td>
+            <button class='button' v-copy="userForCopy(user)">Копировать</button>
+          </td>
+          <td>
+            <router-link :to="{ name: 'UserForm', params: { id: user.id } }">
+              <button
+              type='button'
+              class='button'>
+                Редактировать
+              </button>
+            </router-link>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -60,9 +68,6 @@ export default {
     userForCopy (user) {
       return user.firstName + ' ' + user.familyName + ' ' + user.lastName
     },
-    editUser (user) {
-      this.$emit('editUser', user)
-    }
   },
   computed: {
     usersCount () {
