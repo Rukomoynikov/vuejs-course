@@ -1,17 +1,7 @@
 <template>
   <div>
-    <component
-      v-on:editUser="editUser"
-      v-bind:users="users"
-      v-bind:is="visibleComponent"
-      v-if="visible == 'list'"></component>
+    <users-list v-bind:users="users" />
 
-    <component
-      v-bind:is="visibleComponent"
-      v-bind:editingUser="editingUser"
-      v-on:updateUser="updateUser"
-      v-on:returnToList="visible = 'list'"
-      v-if="visible == 'editUser'"></component>
   </div>
 </template>
 
@@ -38,11 +28,6 @@ export default {
   mounted () {
     this.loadUsers()
   },
-  computed: {
-    visibleComponent () {
-      return this.visible === 'editUser' ? 'user-form' : 'users-list'
-    }
-  },
   methods: {
     loadUsers () {
       HTTP
@@ -50,10 +35,7 @@ export default {
         .then((response) => {
           this.users = response.data
         })
-    },
-    editUser (user) {
-      this.editingUser = user.id
-      this.visible = 'editUser'
+        .catch((error) => { console.log(error) })
     },
     updateUser (user) {
       const userId = this.users.findIndex(function (obj) { return obj.id === user.id })

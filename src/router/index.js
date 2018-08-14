@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import UsersTable from '@/components/UsersTable'
-import PageAbout from '@/components/PageAbout'
-import PageRoot from '@/components/PageRoot'
-import UserForm from '@/components/UserForm'
 import NProgress from 'nprogress'
 
 import 'nprogress/nprogress.css'
@@ -15,22 +11,27 @@ const router = new Router({
     {
       path: '/',
       name: 'Root',
-      component: PageRoot
+      component: () => import('@/components/PageRoot')
     },
     {
       path: '/users',
       name: 'UsersTable',
-      component: UsersTable
+      component: () => import('@/components/UsersTable')
+    },
+    {
+      path: '/users/new',
+      name: 'UsersTable',
+      component: () => import('@/components/NewUserForm')
     },
     {
       path: '/user/:id',
       name: 'UserForm',
-      component: UserForm
+      component: () => import('@/components/UserForm')
     },
     {
       path: '/about',
       name: 'PageAbout',
-      component: PageAbout
+      component: () => import('@/components/PageAbout')
     }
   ]
 })

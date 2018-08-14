@@ -8,6 +8,16 @@
       v-on:click="toggleUsersList">
       {{ buttonText }}
     </button>
+
+
+    <router-link v-bind:to="{ name: 'NewUserForm' }">
+      <button
+        type='button'
+        class='button'>
+        Добавить пользователя
+      </button>
+    </router-link>
+
     <transition name="fade">
     <table class='table' v-show="showUsers">
       <thead>
@@ -66,7 +76,7 @@ export default {
       return avatar || this.defaultAvatar
     },
     userForCopy (user) {
-      return user.firstName + ' ' + user.familyName + ' ' + user.lastName
+      return `${user.name.first} ${user.name.last}`
     }
   },
   computed: {

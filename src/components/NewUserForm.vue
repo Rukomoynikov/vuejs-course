@@ -1,8 +1,8 @@
 <template>
   <div>
-      <h1 class="title">Редактирование пользователя</h1>
+      <h1 class="title">Добавить пользователя</h1>
 
-      <form v-on:submit.prevent='updateUser' v-if="user != null">
+      <form v-on:submit.prevent='createUser'>
 
         <div class="field">
           <label class="label">First tName</label>
@@ -26,15 +26,9 @@
 
       <button
         class='button is-primary'>
-        Сохранить
+        Отправить
       </button>
 
-      <button
-        v-on:click="removeUser"
-        type='button'
-        class='button is-danger'>
-        Удалить
-      </button>
 
       <router-link :to="{ name: 'UsersTable' }">
         <button
@@ -49,47 +43,29 @@
 </template>
 
 <script>
-import axios from 'axios'
+import UserForm from '@/components/UserForm'
 import utilities from '@/utilities/utilities'
 import {HTTP} from '@/utilities/http'
 
 export default {
-  name: 'UserForm',
-  mounted () {
-    this.loadUser()
+  name: 'NewUserForm',
+  methods: {
+    createUser () {
+      const params = this.user
+
+      HTTP.post(`${utilities.dataUrl}users`, params).then((response) => {
+        this.$router.push('/users')
+      })
+    }
   },
   data () {
     return {
-      userID: null,
-      user: null
-    }
-  },
-  computed: {
-    userPath () {
-      return `${utilities.dataUrl}users/${this.$route.params.id}`
-    }
-  },
-  methods: {
-    loadUser () {
-      HTTP.get(this.userPath).then((response) => {
-        this.user = response.data
-      })
-    },
-    updateUser () {
-      const params = this.user
-
-      HTTP.put(this.userPath, params).then((response) => {
-        alert('Пользователь сохраненён')
-        this.$emit('updateUser', this.user)
-      })
-    },
-    removeUser () {
-      HTTP
-        .delete(this.userPath)
-        .then((response) => {
-          this.$router.replace('/users')
-        })
-
+      user: {
+        name: {
+          last: '',
+          first: ''
+        }
+      }
     }
   }
 }
