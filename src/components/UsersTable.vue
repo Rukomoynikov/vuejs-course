@@ -1,13 +1,19 @@
 <template>
   <div>
     <users-list v-bind:users="users" />
-
+    <Pagination
+      v-bind:selectedPaginationStep="selectedPaginationStep"
+      v-bind:paginationStep="paginationStep"
+      v-bind:usersCount="usersCount"
+      v-bind:selectedPage="selectedPage"
+    />
   </div>
 </template>
 
 <script>
 import UsersList from '@/components/UsersList'
 import UserForm from '@/components/UserForm'
+import Pagination from '@/components/Pagination'
 import {HTTP} from '@/utilities/http'
 
 import utilities from '@/utilities/utilities'
@@ -16,13 +22,22 @@ export default {
   name: 'UsersTable',
   components: {
     'users-list': UsersList,
-    'user-form': UserForm
+    'user-form': UserForm,
+    Pagination
   },
   data () {
     return {
       users: [],
       visible: 'list',
-      editingUser: undefined
+      editingUser: undefined,
+      paginationStep: [5, 10, 20],
+      selectedPaginationStep: 5,
+      selectedPage: 0
+    }
+  },
+  computed: {
+    usersCount () {
+      return this.users.length
     }
   },
   mounted () {

@@ -1,7 +1,6 @@
 <template>
   <div>{{ user }}
 
-
     <div class="field">
       <label class="label">First tName</label>
       <div class="control">
