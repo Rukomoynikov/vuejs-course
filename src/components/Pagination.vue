@@ -12,9 +12,6 @@
 <script>
 export default {
   name: 'Pagination',
-  mounted () {
-
-  },
   props: {
     selectedPaginationStep: {
       type: Number,
@@ -43,11 +40,6 @@ export default {
 
       return pages
     }
-  },
-  watch: {
-    // usersCount (newVal, oldVal) {
-    //   console.log('Prop changed: ', newVal, ' | was: ', oldVal)
-    // }
   }
 }
 </script>

@@ -1,13 +1,12 @@
 <template>
   <div>
     <h1 class="title">Редактирование пользователя</h1>
-    {{ user }}
 
     <form v-on:submit.prevent="updateUser">
       <UserFormUI
         v-model="user"
+        v-on:changeUser="changeUser"
         v-if="user != null" />
-
       <br>
 
       <button
@@ -61,6 +60,9 @@ export default {
       HTTP.get(this.userPath).then((response) => {
         this.user = response.data
       })
+    },
+    changeUser (newUser) {
+      this.user = JSON.parse(JSON.stringify(newUser))
     },
     updateUser () {
       const params = this.user

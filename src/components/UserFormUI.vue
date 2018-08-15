@@ -1,5 +1,5 @@
 <template>
-  <div>{{ user }}
+  <div v-if="user != null">
 
     <div class="field">
       <label class="label">First tName</label>
@@ -27,19 +27,22 @@
 <script>
 export default {
   name: 'UserFormUI',
-  props: {
+  props: ['value'],
+  data () {
+    return {
+      user: null
+    }
+  },
+  watch: {
     user: {
-      type: Object,
-      required: true
+      handler (newVal, oldVal) {
+        this.$emit('changeUser', JSON.parse(JSON.stringify(newVal)))
+      },
+      deep: true
     }
   },
-  model: {
-    prop: 'user'
-  },
-  methods: {
-    removeUser () {
-
-    }
+  mounted () {
+    this.user = JSON.parse(JSON.stringify(this.$props.value))
   }
 }
 </script>
