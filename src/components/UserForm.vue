@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import utilities from '@/utilities/utilities'
 import {HTTP} from '@/utilities/http'
 
@@ -89,7 +88,6 @@ export default {
         .then((response) => {
           this.$router.replace('/users')
         })
-
     }
   }
 }

@@ -29,7 +29,6 @@
         Отправить
       </button>
 
-
       <router-link :to="{ name: 'UsersTable' }">
         <button
         type='button'
@@ -43,7 +42,6 @@
 </template>
 
 <script>
-import UserForm from '@/components/UserForm'
 import utilities from '@/utilities/utilities'
 import {HTTP} from '@/utilities/http'
 

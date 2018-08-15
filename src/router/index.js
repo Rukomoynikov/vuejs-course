@@ -20,7 +20,7 @@ const router = new Router({
     },
     {
       path: '/users/new',
-      name: 'UsersTable',
+      name: 'NewUserForm',
       component: () => import('@/components/NewUserForm')
     },
     {

@@ -9,7 +9,6 @@
       {{ buttonText }}
     </button>
 
-
     <router-link v-bind:to="{ name: 'NewUserForm' }">
       <button
         type='button'
