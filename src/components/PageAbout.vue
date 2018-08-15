@@ -9,6 +9,3 @@ export default {
   name: 'PageAbout'
 }
 </script>
-
-<style lang="scss">
-</style>
