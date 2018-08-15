@@ -2,7 +2,7 @@
   <div>
       <h1 class="title">Добавить пользователя</h1>
 
-      <form v-on:submit.prevent='createUser'>
+      <form v-on:submit.prevent="createUser">
 
         <div class="field">
           <label class="label">First tName</label>
@@ -10,7 +10,7 @@
             <input
               class="input"
               type="text"
-              v-model='user.name.first' />
+              v-model="user.name.first" />
           </div>
         </div>
 
@@ -20,19 +20,19 @@
             <input
               class="input"
               type="text"
-              v-model='user.name.last' />
+              v-model="user.name.last" />
           </div>
         </div>
 
       <button
-        class='button is-primary'>
+        class="button is-primary">
         Отправить
       </button>
 
       <router-link :to="{ name: 'UsersTable' }">
         <button
-        type='button'
-        class='button'>
+        type="button"
+        class="button">
           Вернуться в список пользователей
         </button>
       </router-link>

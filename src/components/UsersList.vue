@@ -3,51 +3,51 @@
     <h1 class="title">Пользователи [{{ usersCount }}]</h1>
 
     <button
-      type='button'
-      class='button'
+      type="button"
+      class="button"
       v-on:click="toggleUsersList">
       {{ buttonText }}
     </button>
 
     <router-link v-bind:to="{ name: 'NewUserForm' }">
       <button
-        type='button'
-        class='button'>
+        type="button"
+        class="button">
         Добавить пользователя
       </button>
     </router-link>
 
     <transition name="fade">
-    <table class='table' v-show="showUsers">
-      <thead>
-        <tr>
-          <th>Аватар</th>
-          <th>Имя</th>
-          <th>Фамилия</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-bind:key='user.id' v-for="user in users">
-          <td><img width='40px' v-bind:src=getUserAvatar(user.picture) /></td>
-          <td>{{ user.name.first  | toUpperCase }}</td>
-          <td>{{ user.name.last | toUpperCase}}</td>
-          <td>
-            <button class='button' v-copy="userForCopy(user)">Копировать</button>
-          </td>
-          <td>
-            <router-link :to="{ name: 'UserForm', params: { id: user.id } }">
-              <button
-              type='button'
-              class='button'>
-                Редактировать
-              </button>
-            </router-link>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="table" v-show="showUsers">
+        <thead>
+          <tr>
+            <th>Аватар</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-bind:key="user.id" v-for="user in users">
+            <td><img width="40px" v-bind:src="getUserAvatar(user.picture)" /></td>
+            <td>{{ user.name.first  | toUpperCase }}</td>
+            <td>{{ user.name.last | toUpperCase}}</td>
+            <td>
+              <button class="button" v-copy="userForCopy(user)">Копировать</button>
+            </td>
+            <td>
+              <router-link :to="{ name: 'UserForm', params: { id: user.id } }">
+                <button
+                type="button"
+                class="button">
+                  Редактировать
+                </button>
+              </router-link>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </transition>
   </div>
 </template>
@@ -91,6 +91,10 @@ export default {
   },
   filters: {
     toUpperCase (value) {
+      if (!value.length) {
+        return ''
+      }
+
       return value.toUpperCase()
     }
   }

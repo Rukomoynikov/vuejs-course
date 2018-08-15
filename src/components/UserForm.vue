@@ -3,7 +3,34 @@
     <h1 class="title">Редактирование пользователя</h1>
     {{ user }}
 
-    <UserFormUI v-model="user" />
+    <form v-on:submit.prevent="updateUser">
+      <UserFormUI
+        v-model="user"
+        v-if="user != null" />
+
+      <br>
+
+      <button
+        class="button is-primary">
+        Сохранить
+      </button>
+
+      <button
+        v-on:click="removeUser"
+        type="button"
+        class="button is-danger">
+        Удалить
+      </button>
+
+      <router-link :to="{ name: 'UsersTable' }">
+        <button
+          type="button"
+          class="button">
+          Вернуться в список пользователей
+        </button>
+      </router-link>
+    </form>
+
   </div>
 </template>
 
