@@ -1,5 +1,6 @@
 <template>
-  <div v-if="user != null">
+  <div v-if="localUser != null">
+    {{ localUser }}
 
     <div class="field">
       <label class="label">First tName</label>
@@ -7,7 +8,7 @@
         <input
           class="input"
           type="text"
-          v-model="user.name.first" />
+          v-model="localUser.name.first" />
       </div>
     </div>
 
@@ -17,7 +18,7 @@
         <input
           class="input"
           type="text"
-          v-model="user.name.last" />
+          v-model="localUser.name.last" />
       </div>
     </div>
 
@@ -27,22 +28,23 @@
 <script>
 export default {
   name: 'UserFormUI',
-  props: ['value'],
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
-      user: null
+      localUser: null
     }
   },
-  watch: {
-    user: {
-      handler (newVal, oldVal) {
-        this.$emit('changeUser', JSON.parse(JSON.stringify(newVal)))
-      },
-      deep: true
-    }
+  model: {
+    prop: 'user',
+    event: 'changeUser'
   },
   mounted () {
-    this.user = JSON.parse(JSON.stringify(this.$props.value))
+    this.localUser = Object.assign({}, this.$props.user)
   }
 }
 </script>

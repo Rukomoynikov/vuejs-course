@@ -3,9 +3,11 @@
     <h1 class="title">Редактирование пользователя</h1>
 
     <form v-on:submit.prevent="updateUser">
+
+      {{ user }}
+
       <UserFormUI
         v-model="user"
-        v-on:changeUser="changeUser"
         v-if="user != null" />
       <br>
 
