@@ -1,9 +1,12 @@
 <template>
   <div>
-    <users-list v-bind:users="users" />
+    <users-list v-bind:users="users"/>
+
+    <PaginationStepSelect
+      v-model="selectedPaginationStep"
+      v-bind:paginationStep="paginationStep"/>
+
     <Pagination
-      v-bind:selectedPaginationStep="selectedPaginationStep"
-      v-bind:paginationStep="paginationStep"
       v-bind:usersCount="usersCount"
       v-bind:selectedPage="selectedPage"
     />
@@ -14,6 +17,7 @@
 import UsersList from '@/components/UsersList'
 import UserForm from '@/components/UserForm'
 import Pagination from '@/components/Pagination'
+import PaginationStepSelect from '@/components/PaginationStepSelect'
 import {HTTP} from '@/utilities/http'
 
 import utilities from '@/utilities/utilities'
@@ -23,7 +27,8 @@ export default {
   components: {
     'users-list': UsersList,
     'user-form': UserForm,
-    Pagination
+    Pagination,
+    PaginationStepSelect
   },
   data () {
     return {

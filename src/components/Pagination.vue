@@ -1,6 +1,5 @@
 <template>
   <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-    {{ pages }}
     <a class="pagination-previous">Назад</a>
     <a class="pagination-next">Вперёд</a>
     <ul class="pagination-list">
@@ -13,13 +12,6 @@
 export default {
   name: 'Pagination',
   props: {
-    selectedPaginationStep: {
-      type: Number,
-      default: 5
-    },
-    paginationStep: {
-      type: Array
-    },
     usersCount: {
       type: Number,
       default: 0
