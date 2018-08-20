@@ -19,7 +19,6 @@
 
     <transition name="fade">
       <table
-        v-show="showUsers"
         class="table">
         <thead>
           <slot name="header">
@@ -68,11 +67,7 @@ export default {
   name: 'UsersList',
   filters: {
     toUpperCase (value) {
-      if (!value.length) {
-        return ''
-      }
-
-      return value.toUpperCase()
+      return value.length ? value.toUpperCase() : ''
     }
   },
   props: {

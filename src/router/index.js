@@ -7,36 +7,37 @@ import 'nprogress/nprogress.css'
 Vue.use(Router)
 
 const router = new Router({
+  linkActiveClass: 'active',
   routes: [
     {
       path: '/',
       name: 'Root',
-      component: () => import('@/components/pages/PageRoot')
+      component: () => import('@/components/pages/PageRoot.vue')
     },
     {
       path: '/users',
       name: 'UsersTable',
-      component: () => import('@/components/pages/UsersTable')
+      component: () => import('@/components/pages/UsersTable.vue')
     },
     {
       path: '/users/new',
       name: 'NewUserForm',
-      component: () => import('@/components/pages/NewUserForm')
+      component: () => import('@/components/pages/NewUserForm.vue')
     },
     {
       path: '/user/:id',
       name: 'UserForm',
-      component: () => import('@/components/pages/UserForm')
+      component: () => import('@/components/pages/UserForm.vue')
     },
     {
       path: '/about',
       name: 'PageAbout',
-      component: () => import('@/components/pages/PageAbout')
+      component: () => import('@/components/pages/PageAbout.vue')
     },
     {
       path: '/phonelist',
       name: 'PhoneList',
-      component: () => import('@/components/pages/PagePhoneList')
+      component: () => import('@/components/pages/PagePhoneList.vue')
     }
   ]
 })

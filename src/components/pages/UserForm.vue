@@ -3,9 +3,8 @@
     <h1 class="title">Редактирование пользователя</h1>
 
     <form @submit.prevent="updateUser">
-
       <UserFormUI
-        v-if="user != null"
+        v-if="user"
         v-model="user" />
       <br>
 
@@ -34,8 +33,8 @@
 </template>
 
 <script>
-import UserFormUI from '@/components/UserFormUI'
-import axios from '@/utilities/http'
+import axios from '@/utilities/http.js'
+const UserFormUI = () => import('@/components/UserFormUI.vue')
 
 export default {
   name: 'UserForm',

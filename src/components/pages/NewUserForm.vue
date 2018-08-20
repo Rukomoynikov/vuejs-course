@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import axios from '@/utilities/http'
+import axios from '@/utilities/http.js'
 
 export default {
   name: 'NewUserForm',

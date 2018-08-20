@@ -21,7 +21,7 @@
 
 <script>
 import flatpickr from 'flatpickr'
-import {Russian} from 'flatpickr/dist/l10n/ru'
+import {Russian} from 'flatpickr/dist/l10n/ru.js'
 import 'flatpickr/dist/flatpickr.min.css'
 
 export default {

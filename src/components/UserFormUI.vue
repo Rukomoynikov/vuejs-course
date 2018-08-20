@@ -1,5 +1,5 @@
 <template>
-  <div v-if="localUser != null">
+  <div>
 
     <DatePicker
       v-model="localUser.registered" />
@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import DatePicker from '@/components/DatePicker'
-import MediumEditor from '@/components/MediumEditor'
+const DatePicker = () => import('@/components/DatePicker.vue')
+const MediumEditor = () => import('@/components/MediumEditor.vue')
 
 export default {
   name: 'UserFormUI',
@@ -62,8 +62,8 @@ export default {
       deep: true
     }
   },
-  mounted () {
-    this.localUser = Object.assign({}, this.$props.user)
+  beforeMount () {
+    this.localUser = Object.assign({}, this.user)
   }
 }
 </script>

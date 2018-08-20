@@ -3,8 +3,14 @@
     class="pagination is-centered"
     role="navigation"
     aria-label="pagination">
-    <a class="pagination-previous">Назад</a>
-    <a class="pagination-next">Вперёд</a>
+    <a
+      v-if="value > 0"
+      class="pagination-previous"
+      @click="previousPage">Назад</a>
+    <a
+      v-if="value == pagesCount"
+      class="pagination-next"
+      @click="nextPage">Вперёд</a>
     <ul class="pagination-list">
       <li
         v-for="page in pagesCount"
@@ -39,9 +45,7 @@ export default {
   },
   computed: {
     pagesCount () {
-      const pagesCount = Math.ceil(this.usersCount / this.selectedPaginationStep)
-
-      return pagesCount
+      return Math.ceil(this.usersCount / this.selectedPaginationStep)
     }
   },
   methods: {
@@ -50,6 +54,12 @@ export default {
     },
     isPageActiv (page) {
       return this.value === (page - 1)
+    },
+    nextPage () {
+      this.$emit('input', this.value + 1)
+    },
+    previousPage () {
+      this.$emit('input', this.value - 1)
     }
   }
 }

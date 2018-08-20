@@ -20,6 +20,11 @@ export default {
       default: ''
     }
   },
+  data () {
+    return {
+      editor: null
+    }
+  },
   mounted () {
     this.editor = new MediumEditor(this.$refs.input)
 
@@ -32,7 +37,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

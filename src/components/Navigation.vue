@@ -6,14 +6,11 @@
 
     <div class="navigation__menu">
       <router-link
-        :to="{ name: 'PageAbout' }"
-        active-class="active">About</router-link>
+        :to="{ name: 'PageAbout' }">About</router-link>
       <router-link
-        :to="{ name: 'UsersTable' }"
-        active-class="active">Users</router-link>
+        :to="{ name: 'UsersTable' }">Users</router-link>
       <router-link
-        :to="{ name: 'UsersTable' }"
-        active-class="active">Phones</router-link>
+        :to="{ name: 'UsersTable' }">Phones</router-link>
     </div>
   </div>
 </template>

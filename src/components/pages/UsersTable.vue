@@ -19,11 +19,12 @@
 </template>
 
 <script>
-import UsersList from '@/components/UsersList'
-import Pagination from '@/components/Pagination'
-import PaginationStepSelect from '@/components/PaginationStepSelect'
-import axios from '@/utilities/http'
+import axios from '@/utilities/http.js'
 import splitArray from 'split-array'
+
+const UsersList = () => import('@/components/UsersList.vue')
+const Pagination = () => import('@/components/Pagination.vue')
+const PaginationStepSelect = () => import('@/components/PaginationStepSelect.vue')
 
 export default {
 
@@ -66,10 +67,6 @@ export default {
           this.users = response.data
         })
         .catch((error) => { console.log(error) })
-    },
-    updateUser (user) {
-      const userId = this.users.findIndex(function (obj) { return obj.id === user.id })
-      this.users[userId] = user
     }
   }
 }
