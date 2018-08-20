@@ -20,7 +20,6 @@
 
 <script>
 import UsersList from '@/components/UsersList'
-import UserForm from '@/components/UserForm'
 import Pagination from '@/components/Pagination'
 import PaginationStepSelect from '@/components/PaginationStepSelect'
 import {HTTP} from '@/utilities/http'
@@ -33,7 +32,6 @@ export default {
   name: 'UsersTable',
   components: {
     'users-list': UsersList,
-    'user-form': UserForm,
     Pagination,
     PaginationStepSelect
   },

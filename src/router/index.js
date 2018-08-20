@@ -11,27 +11,27 @@ const router = new Router({
     {
       path: '/',
       name: 'Root',
-      component: () => import('@/components/PageRoot')
+      component: () => import('@/components/pages/PageRoot')
     },
     {
       path: '/users',
       name: 'UsersTable',
-      component: () => import('@/components/UsersTable')
+      component: () => import('@/components/pages/UsersTable')
     },
     {
       path: '/users/new',
       name: 'NewUserForm',
-      component: () => import('@/components/NewUserForm')
+      component: () => import('@/components/pages/NewUserForm')
     },
     {
       path: '/user/:id',
       name: 'UserForm',
-      component: () => import('@/components/UserForm')
+      component: () => import('@/components/pages/UserForm')
     },
     {
       path: '/about',
       name: 'PageAbout',
-      component: () => import('@/components/PageAbout')
+      component: () => import('@/components/pages/PageAbout')
     }
   ]
 })
