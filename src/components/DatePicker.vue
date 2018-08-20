@@ -1,6 +1,11 @@
 <template>
   <div class="field">
-    <label class="label">Date Birth</label>
+    <div class="flex">
+      <label class="label">Date Birth</label>
+      <button type="button" class="button is-small" v-on:click="openPicker">
+        open
+      </button>
+    </div>
     <div class="control">
       <input
         class="input"
@@ -42,7 +47,23 @@ export default {
           this.$emit('input', dateStr)
         }
       })
+    },
+    openPicker () {
+      this.picker.open()
     }
+  },
+  beforeDestroy () {
+    this.picker.destroy()
   }
 }
 </script>
+
+<style scoped>
+  .flex {
+    display: flex;
+  }
+
+  button {
+    margin-bottom: 0.5em;
+  }
+</style>
