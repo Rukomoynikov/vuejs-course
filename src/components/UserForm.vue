@@ -4,8 +4,6 @@
 
     <form v-on:submit.prevent="updateUser">
 
-      {{ user }}
-
       <UserFormUI
         v-model="user"
         v-if="user != null" />

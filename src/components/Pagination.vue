@@ -3,7 +3,16 @@
     <a class="pagination-previous">Назад</a>
     <a class="pagination-next">Вперёд</a>
     <ul class="pagination-list">
-      <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+      <li
+        v-bind:key="page"
+        v-for="page in pagesCount">
+        <button
+          v-on:click="selectPage(page)"
+          class="pagination-link"
+          v-bind:class="{ 'is-current': isPageActiv(page) }">
+          {{ page }}
+        </button>
+      </li>
     </ul>
   </nav>
 </template>
@@ -16,26 +25,29 @@ export default {
       type: Number,
       default: 0
     },
-    selectedPage: {
+    value: {
       type: Number,
       default: 0
+    },
+    selectedPaginationStep: {
+      type: Number,
+      required: true
+    }
+  },
+  methods: {
+    selectPage (page) {
+      this.$emit('input', page - 1)
+    },
+    isPageActiv (page) {
+      return this.value === (page - 1)
     }
   },
   computed: {
-    pages () {
-      const pagesCount = Number(this.usersCount / this.selectedPaginationStep)
-      const pages = []
+    pagesCount () {
+      const pagesCount = Math.ceil(this.usersCount / this.selectedPaginationStep)
 
-      for (var i = 0; i < pagesCount; i++) {
-        pages.push(i)
-      }
-
-      return pages
+      return pagesCount
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="select">
     <select class="form-control" v-model="selectedStep" v-on:change="updateStep">
       <option
         v-bind:key="i"

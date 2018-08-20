@@ -1,6 +1,8 @@
 <template>
   <div v-if="localUser != null">
-    {{ localUser }}
+    <DatePicker
+      v-model="localUser.registered"
+    />
 
     <div class="field">
       <label class="label">First tName</label>
@@ -26,8 +28,11 @@
 </template>
 
 <script>
+import DatePicker from '@/components/DatePicker'
+
 export default {
   name: 'UserFormUI',
+  components: { DatePicker },
   props: {
     user: {
       type: Object,
@@ -37,6 +42,14 @@ export default {
   data () {
     return {
       localUser: null
+    }
+  },
+  watch: {
+    localUser: {
+      handler () {
+        this.$emit('change', this.localUser)
+      },
+      deep: true
     }
   },
   model: {

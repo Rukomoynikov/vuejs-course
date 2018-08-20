@@ -1,7 +1,8 @@
 {
-  "env": { 
+  "extends": [ "plugin:vue/recommended", "@vue/prettier"],
+  "env": {
     "jest": true
   },
-  "globals": { 
+  "globals": {
   }
 }
