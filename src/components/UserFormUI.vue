@@ -1,5 +1,6 @@
 <template>
   <div v-if="localUser != null">
+    {{ localUser }}
     <DatePicker
       v-model="localUser.registered"
     />
@@ -24,15 +25,21 @@
       </div>
     </div>
 
+    <div class="field">
+      <label class="label">Biography</label>
+      <MediumEditor v-model="localUser.about" />
+    </div>
+
   </div>
 </template>
 
 <script>
 import DatePicker from '@/components/DatePicker'
+import MediumEditor from '@/components/MediumEditor'
 
 export default {
   name: 'UserFormUI',
-  components: { DatePicker },
+  components: { DatePicker, MediumEditor },
   props: {
     user: {
       type: Object,

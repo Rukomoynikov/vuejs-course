@@ -1,0 +1,35 @@
+<template>
+  <div>
+    <textarea class="textarea" ref="input" v-model="value"></textarea>
+  </div>
+</template>
+
+<script>
+import MediumEditor from 'medium-editor'
+import 'medium-editor/dist/css/medium-editor.min.css'
+import 'medium-editor/dist/css/themes/flat.min.css'
+
+export default {
+  name: 'MediumEditor',
+  props: {
+    value: {
+      type: String,
+      default: ''
+    }
+  },
+  mounted () {
+    this.editor = new MediumEditor(this.$refs.input)
+
+    this.editor.subscribe('editableInput', (event, editorElement) => {
+      this.$emit('input', this.editor.getContent())
+    })
+  },
+  beforeDestroy () {
+    this.editor.destroy()
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

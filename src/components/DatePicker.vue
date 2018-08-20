@@ -35,9 +35,6 @@ export default {
   model: {
     prop: 'value'
   },
-  watch: {
-
-  },
   methods: {
     initDatePicker () {
       this.picker = flatpickr(this.$refs.datepicker, {
