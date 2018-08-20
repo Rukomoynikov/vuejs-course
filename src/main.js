@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Copy from 'v-copy'
 import VTooltip from 'v-tooltip'
+import VeeValidate from 'vee-validate'
 
 import App from './App.vue'
 import router from './router/index.js'
@@ -10,6 +11,7 @@ import './assets/sass/main.scss'
 
 Vue.use(Copy)
 Vue.use(VTooltip)
+Vue.use(VeeValidate)
 
 Vue.config.productionTip = false
 

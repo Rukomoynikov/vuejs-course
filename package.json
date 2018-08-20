@@ -26,8 +26,10 @@
     "split-array": "^1.0.1",
     "v-copy": "^0.1.0",
     "v-tooltip": "^2.0.0-rc.33",
+    "vee-validate": "^2.1.0-beta.8",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

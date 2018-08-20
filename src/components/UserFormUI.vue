@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <DatePicker
       v-model="localUser.registered" />
 
@@ -8,9 +7,11 @@
       <label class="label">First tName</label>
       <div class="control">
         <input
+          v-validate="'required'"
           v-model="localUser.name.first"
           class="input"
-          type="text" >
+          type="text"
+          name="firstName">
       </div>
     </div>
 
@@ -58,6 +59,7 @@ export default {
     localUser: {
       handler () {
         this.$emit('change', this.localUser)
+        console.log(this.errors)
       },
       deep: true
     }

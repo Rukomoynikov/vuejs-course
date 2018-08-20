@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="title">Редактирование пользователя</h1>
+    {{ errors }}
 
     <form @submit.prevent="updateUser">
       <UserFormUI
@@ -64,6 +65,10 @@ export default {
     },
     updateUser () {
       const params = this.user
+
+      if (this.errors.items.length) {
+        return alert('Ошибки в форме')
+      }
 
       axios.put(this.userPath, params).then((response) => {
         alert('Пользователь сохраненён')
