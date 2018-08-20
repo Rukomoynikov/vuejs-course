@@ -1,11 +1,19 @@
 <template>
   <div class="navigation">
-    <router-link :to="{ name: 'Root' }" class="navigation__logo">VUE JS COURSE</router-link>
+    <router-link
+      :to="{ name: 'Root' }"
+      class="navigation__logo">VUE JS COURSE</router-link>
 
     <div class="navigation__menu">
-      <router-link :to="{ name: 'PageAbout' }" active-class="active">About</router-link>
-      <router-link :to="{ name: 'UsersTable' }" active-class="active">Users</router-link>
-      <router-link :to="{ name: 'UsersTable' }" active-class="active">Phones</router-link>
+      <router-link
+        :to="{ name: 'PageAbout' }"
+        active-class="active">About</router-link>
+      <router-link
+        :to="{ name: 'UsersTable' }"
+        active-class="active">Users</router-link>
+      <router-link
+        :to="{ name: 'UsersTable' }"
+        active-class="active">Phones</router-link>
     </div>
   </div>
 </template>

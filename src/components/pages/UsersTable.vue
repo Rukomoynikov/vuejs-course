@@ -1,17 +1,17 @@
 <template>
   <div>
-    <users-list v-bind:users="usersOnPage"/>
+    <users-list :users="usersOnPage"/>
 
     <div class="pagination">
       <div class="pagination__pageSwitcher">
         <PaginationStepSelect
-          v-model="selectedPaginationStep"
-          v-bind:paginationStep="paginationStep"/>
+          :paginationStep="paginationStep"
+          v-model="selectedPaginationStep" />
       </div>
 
       <Pagination
-        v-bind:usersCount="usersCount"
-        v-bind:selectedPaginationStep="selectedPaginationStep"
+        :usersCount="usersCount"
+        :selectedPaginationStep="selectedPaginationStep"
         v-model="selectedPage"
       />
     </div>

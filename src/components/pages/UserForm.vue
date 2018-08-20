@@ -2,11 +2,11 @@
   <div>
     <h1 class="title">Редактирование пользователя</h1>
 
-    <form v-on:submit.prevent="updateUser">
+    <form @submit.prevent="updateUser">
 
       <UserFormUI
-        v-model="user"
-        v-if="user != null" />
+        v-if="user != null"
+        v-model="user" />
       <br>
 
       <button
@@ -15,9 +15,9 @@
       </button>
 
       <button
-        v-on:click="removeUser"
+        class="button is-danger"
         type="button"
-        class="button is-danger">
+        @click="removeUser">
         Удалить
       </button>
 
@@ -39,9 +39,6 @@ import axios from '@/utilities/http'
 
 export default {
   name: 'UserForm',
-  mounted () {
-    this.loadUser()
-  },
   components: { UserFormUI },
   data () {
     return {
@@ -53,6 +50,9 @@ export default {
     userPath () {
       return `users/${this.$route.params.id}`
     }
+  },
+  mounted () {
+    this.loadUser()
   },
   methods: {
     loadUser () {

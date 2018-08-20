@@ -1,6 +1,9 @@
 <template>
   <div>
-    <textarea class="textarea" ref="input" v-model="value"></textarea>
+    <textarea
+      ref="input"
+      v-model="value"
+      class="textarea" />
   </div>
 </template>
 

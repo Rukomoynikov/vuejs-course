@@ -2,15 +2,18 @@
   <div class="field">
     <div class="flex">
       <label class="label">Date Birth</label>
-      <button type="button" class="button is-small" v-on:click="openPicker">
+      <button
+        type="button"
+        class="button is-small"
+        @click="openPicker">
         open
       </button>
     </div>
     <div class="control">
       <input
-        class="input"
-        v-bind:value="value"
         ref="datepicker"
+        :value="value"
+        class="input"
         type="text">
     </div>
   </div>
@@ -23,8 +26,8 @@ import 'flatpickr/dist/flatpickr.min.css'
 
 export default {
   name: 'DatePicker',
-  mounted () {
-    this.initDatePicker()
+  model: {
+    prop: 'value'
   },
   props: {
     value: {
@@ -32,8 +35,11 @@ export default {
       required: true
     }
   },
-  model: {
-    prop: 'value'
+  mounted () {
+    this.initDatePicker()
+  },
+  beforeDestroy () {
+    this.picker.destroy()
   },
   methods: {
     initDatePicker () {
@@ -48,9 +54,6 @@ export default {
     openPicker () {
       this.picker.open()
     }
-  },
-  beforeDestroy () {
-    this.picker.destroy()
   }
 }
 </script>

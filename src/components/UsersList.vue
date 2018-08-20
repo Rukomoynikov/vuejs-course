@@ -5,11 +5,11 @@
     <button
       type="button"
       class="button"
-      v-on:click="toggleUsersList">
+      @click="toggleUsersList">
       {{ buttonText }}
     </button>
 
-    <router-link v-bind:to="{ name: 'NewUserForm' }">
+    <router-link :to="{ name: 'NewUserForm' }">
       <button
         type="button"
         class="button">
@@ -18,31 +18,40 @@
     </router-link>
 
     <transition name="fade">
-      <table class="table" v-show="showUsers">
+      <table
+        v-show="showUsers"
+        class="table">
         <thead>
           <slot name="header">
             <tr>
               <th>Аватар</th>
               <th>Имя</th>
               <th>Фамилия</th>
-              <th></th>
-              <th></th>
+              <th/>
+              <th/>
             </tr>
           </slot>
         </thead>
         <tbody>
-          <tr v-bind:key="user.id" v-for="user in users">
-            <td><img width="40px" v-bind:src="getUserAvatar(user.picture)" /></td>
-            <td>{{ user.name.first  | toUpperCase }}</td>
-            <td>{{ user.name.last | toUpperCase}}</td>
+          <tr
+            v-for="user in users"
+            :key="user.id">
+            <td><img
+              :src="getUserAvatar(user.picture)"
+              width="40px"></td>
+            <td>{{ user.name.first | toUpperCase }}</td>
+            <td>{{ user.name.last | toUpperCase }}</td>
             <td>
-              <button class="button" v-copy="userForCopy(user)">Копировать</button>
+              <button
+                v-copy="userForCopy(user)"
+                class="button">Копировать
+              </button>
             </td>
             <td>
               <router-link :to="{ name: 'UserForm', params: { id: user.id } }">
                 <button
-                type="button"
-                class="button">
+                  type="button"
+                  class="button">
                   Редактировать
                 </button>
               </router-link>
@@ -57,6 +66,15 @@
 <script>
 export default {
   name: 'UsersList',
+  filters: {
+    toUpperCase (value) {
+      if (!value.length) {
+        return ''
+      }
+
+      return value.toUpperCase()
+    }
+  },
   props: {
     users: {
       required: true,
@@ -67,17 +85,6 @@ export default {
     return {
       showUsers: true,
       defaultAvatar: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'
-    }
-  },
-  methods: {
-    toggleUsersList () {
-      this.showUsers = !this.showUsers
-    },
-    getUserAvatar (avatar) {
-      return avatar || this.defaultAvatar
-    },
-    userForCopy (user) {
-      return `${user.name.first} ${user.name.last}`
     }
   },
   computed: {
@@ -91,13 +98,15 @@ export default {
       return this.showUsers ? 'Скрыть таблицу' : 'Показать таблицу'
     }
   },
-  filters: {
-    toUpperCase (value) {
-      if (!value.length) {
-        return ''
-      }
-
-      return value.toUpperCase()
+  methods: {
+    toggleUsersList () {
+      this.showUsers = !this.showUsers
+    },
+    getUserAvatar (avatar) {
+      return avatar || this.defaultAvatar
+    },
+    userForCopy (user) {
+      return `${user.name.first} ${user.name.last}`
     }
   }
 }

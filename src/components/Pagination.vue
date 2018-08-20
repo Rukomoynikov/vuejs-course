@@ -1,15 +1,18 @@
 <template>
-  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+  <nav
+    class="pagination is-centered"
+    role="navigation"
+    aria-label="pagination">
     <a class="pagination-previous">Назад</a>
     <a class="pagination-next">Вперёд</a>
     <ul class="pagination-list">
       <li
-        v-bind:key="page"
-        v-for="page in pagesCount">
+        v-for="page in pagesCount"
+        :key="page">
         <button
-          v-on:click="selectPage(page)"
+          :class="{ 'is-current': isPageActiv(page) }"
           class="pagination-link"
-          v-bind:class="{ 'is-current': isPageActiv(page) }">
+          @click="selectPage(page)">
           {{ page }}
         </button>
       </li>
@@ -34,19 +37,19 @@ export default {
       required: true
     }
   },
+  computed: {
+    pagesCount () {
+      const pagesCount = Math.ceil(this.usersCount / this.selectedPaginationStep)
+
+      return pagesCount
+    }
+  },
   methods: {
     selectPage (page) {
       this.$emit('input', page - 1)
     },
     isPageActiv (page) {
       return this.value === (page - 1)
-    }
-  },
-  computed: {
-    pagesCount () {
-      const pagesCount = Math.ceil(this.usersCount / this.selectedPaginationStep)
-
-      return pagesCount
     }
   }
 }

@@ -2,16 +2,15 @@
   <div v-if="localUser != null">
 
     <DatePicker
-      v-model="localUser.registered"
-    />
+      v-model="localUser.registered" />
 
     <div class="field">
       <label class="label">First tName</label>
       <div class="control">
         <input
+          v-model="localUser.name.first"
           class="input"
-          type="text"
-          v-model="localUser.name.first" />
+          type="text" >
       </div>
     </div>
 
@@ -19,9 +18,9 @@
       <label class="label">Last tName</label>
       <div class="control">
         <input
+          v-model="localUser.name.last"
           class="input"
-          type="text"
-          v-model="localUser.name.last" />
+          type="text" >
       </div>
     </div>
 
@@ -40,6 +39,10 @@ import MediumEditor from '@/components/MediumEditor'
 export default {
   name: 'UserFormUI',
   components: { DatePicker, MediumEditor },
+  model: {
+    prop: 'user',
+    event: 'changeUser'
+  },
   props: {
     user: {
       type: Object,
@@ -58,10 +61,6 @@ export default {
       },
       deep: true
     }
-  },
-  model: {
-    prop: 'user',
-    event: 'changeUser'
   },
   mounted () {
     this.localUser = Object.assign({}, this.$props.user)
