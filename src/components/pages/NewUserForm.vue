@@ -42,8 +42,7 @@
 </template>
 
 <script>
-import utilities from '@/utilities/utilities'
-import {HTTP} from '@/utilities/http'
+import axios from '@/utilities/http'
 
 export default {
   name: 'NewUserForm',
@@ -51,7 +50,7 @@ export default {
     createUser () {
       const params = this.user
 
-      HTTP.post(`${utilities.dataUrl}users`, params).then((response) => {
+      axios.post('users', params).then((response) => {
         this.$router.push('/users')
       })
     }

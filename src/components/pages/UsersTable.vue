@@ -22,10 +22,8 @@
 import UsersList from '@/components/UsersList'
 import Pagination from '@/components/Pagination'
 import PaginationStepSelect from '@/components/PaginationStepSelect'
-import {HTTP} from '@/utilities/http'
+import axios from '@/utilities/http'
 import splitArray from 'split-array'
-
-import utilities from '@/utilities/utilities'
 
 export default {
 
@@ -62,8 +60,8 @@ export default {
   },
   methods: {
     loadUsers () {
-      HTTP
-        .get(utilities.dataUrl + 'users')
+      axios
+        .get('users')
         .then((response) => {
           this.users = response.data
         })

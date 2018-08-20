@@ -1,6 +1,6 @@
 <template>
   <div v-if="localUser != null">
-    {{ localUser }}
+
     <DatePicker
       v-model="localUser.registered"
     />

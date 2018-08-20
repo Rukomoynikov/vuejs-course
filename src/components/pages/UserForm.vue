@@ -34,9 +34,8 @@
 </template>
 
 <script>
-import utilities from '@/utilities/utilities'
 import UserFormUI from '@/components/UserFormUI'
-import {HTTP} from '@/utilities/http'
+import axios from '@/utilities/http'
 
 export default {
   name: 'UserForm',
@@ -52,12 +51,12 @@ export default {
   },
   computed: {
     userPath () {
-      return `${utilities.dataUrl}users/${this.$route.params.id}`
+      return `users/${this.$route.params.id}`
     }
   },
   methods: {
     loadUser () {
-      HTTP.get(this.userPath).then((response) => {
+      axios.get(this.userPath).then((response) => {
         this.user = response.data
       })
     },
@@ -67,13 +66,13 @@ export default {
     updateUser () {
       const params = this.user
 
-      HTTP.put(this.userPath, params).then((response) => {
+      axios.put(this.userPath, params).then((response) => {
         alert('Пользователь сохраненён')
         this.$emit('updateUser', this.user)
       })
     },
     removeUser () {
-      HTTP
+      axios
         .delete(this.userPath)
         .then((response) => {
           this.$router.replace('/users')

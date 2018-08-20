@@ -20,13 +20,15 @@
     <transition name="fade">
       <table class="table" v-show="showUsers">
         <thead>
-          <tr>
-            <th>Аватар</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th></th>
-            <th></th>
-          </tr>
+          <slot name="header">
+            <tr>
+              <th>Аватар</th>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </slot>
         </thead>
         <tbody>
           <tr v-bind:key="user.id" v-for="user in users">
