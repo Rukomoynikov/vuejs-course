@@ -1,6 +1,18 @@
 <template>
   <div>
-    <users-list :users="usersOnPage"/>
+    <users-list :users="usersOnPage">
+      <template slot="header">
+        <slot name="header" />
+      </template>
+
+      <template
+        slot="row"
+        slot-scope="slotScope">
+        <slot
+          :slotScope="slotScope.user"
+          name="row" />
+      </template>
+    </users-list>
 
     <div class="pagination">
       <div class="pagination__pageSwitcher">

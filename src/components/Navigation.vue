@@ -10,7 +10,7 @@
       <router-link
         :to="{ name: 'UsersTable' }">Users</router-link>
       <router-link
-        :to="{ name: 'UsersTable' }">Phones</router-link>
+        :to="{ name: 'PagePhoneList' }">Phones</router-link>
     </div>
   </div>
 </template>

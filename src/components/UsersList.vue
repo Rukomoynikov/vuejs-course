@@ -32,30 +32,36 @@
           </slot>
         </thead>
         <tbody>
+
           <tr
             v-for="user in users"
             :key="user.id">
-            <td><img
-              :src="getUserAvatar(user.picture)"
-              width="40px"></td>
-            <td>{{ user.name.first | toUpperCase }}</td>
-            <td>{{ user.name.last | toUpperCase }}</td>
-            <td>
-              <button
-                v-copy="userForCopy(user)"
-                class="button">Копировать
-              </button>
-            </td>
-            <td>
-              <router-link :to="{ name: 'UserForm', params: { id: user.id } }">
+            <slot
+              :user="user"
+              name="row">
+              <td><img
+                :src="getUserAvatar(user.picture)"
+                width="40px"></td>
+              <td>{{ user.name.first | toUpperCase }}</td>
+              <td>{{ user.name.last | toUpperCase }}</td>
+              <td>
                 <button
-                  type="button"
-                  class="button">
-                  Редактировать
+                  v-copy="userForCopy(user)"
+                  class="button">Копировать
                 </button>
-              </router-link>
-            </td>
+              </td>
+              <td>
+                <router-link :to="{ name: 'UserForm', params: { id: user.id } }">
+                  <button
+                    type="button"
+                    class="button">
+                    Редактировать
+                  </button>
+                </router-link>
+              </td>
+            </slot>
           </tr>
+
         </tbody>
       </table>
     </transition>

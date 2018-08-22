@@ -36,7 +36,7 @@ const router = new Router({
     },
     {
       path: '/phonelist',
-      name: 'PhoneList',
+      name: 'PagePhoneList',
       component: () => import('@/components/pages/PagePhoneList.vue')
     }
   ]
