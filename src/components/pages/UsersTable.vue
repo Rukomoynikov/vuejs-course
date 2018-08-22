@@ -45,7 +45,6 @@ export default {
   },
   computed: {
     users () {
-      debugger
       return this.$store.state.users || []
     },
     usersCount () {
