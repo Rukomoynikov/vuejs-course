@@ -56,9 +56,13 @@ export default {
   },
   methods: {
     loadUser () {
-      axios.get(this.userPath).then((response) => {
-        this.user = response.data
-      })
+      axios
+        .get(this.userPath).then((response) => {
+          this.user = response.data
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     changeUser (newUser) {
       this.user = JSON.parse(JSON.stringify(newUser))
@@ -70,16 +74,23 @@ export default {
         return alert('Ошибки в форме')
       }
 
-      axios.put(this.userPath, params).then((response) => {
-        alert('Пользователь сохраненён')
-        this.$emit('updateUser', this.user)
-      })
+      axios
+        .put(this.userPath, params).then((response) => {
+          alert('Пользователь сохраненён')
+          this.$emit('updateUser', this.user)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     removeUser () {
       axios
         .delete(this.userPath)
         .then((response) => {
           this.$router.replace('/users')
+        })
+        .catch((error) => {
+          console.log(error)
         })
     }
   }

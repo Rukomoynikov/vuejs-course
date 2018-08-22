@@ -60,9 +60,13 @@ export default {
     createUser () {
       const params = this.user
 
-      axios.post('users', params).then((response) => {
-        this.$router.push('/users')
-      })
+      axios
+        .post('users', params).then((response) => {
+          this.$router.push('/users')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }
