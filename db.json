@@ -10,7 +10,7 @@
       "age": 30,
       "eyeColor": "green",
       "name": {
-        "first": "aa",
+        "first": "",
         "last": "Mccormick"
       },
       "company": "ZENSURE",

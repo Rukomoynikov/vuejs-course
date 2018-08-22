@@ -7,12 +7,13 @@
       <label class="label">First tName</label>
       <div class="control">
         <input
-          v-validate="'required'"
+          v-validate.immediate="'required'"
           v-model="localUser.name.first"
-          class="input"
+          :class="{'input': true, 'is-danger': errors.has('firstName'), }"
           type="text"
           name="firstName">
       </div>
+      <span v-show="errors.has('firstName')" class="help is-danger">{{ errors.first('firstName') }}</span>
     </div>
 
     <div class="field">
