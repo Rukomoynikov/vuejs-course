@@ -36,7 +36,6 @@ export default {
   },
   data () {
     return {
-      users: [],
       visible: 'list',
       editingUser: undefined,
       paginationStep: [5, 10, 20],
@@ -45,6 +44,10 @@ export default {
     }
   },
   computed: {
+    users () {
+      debugger
+      return this.$store.state.users || []
+    },
     usersCount () {
       return this.users.length
     },
@@ -61,12 +64,7 @@ export default {
   },
   methods: {
     loadUsers () {
-      axios
-        .get('users')
-        .then((response) => {
-          this.users = response.data
-        })
-        .catch((error) => { console.log(error) })
+      this.$store.dispatch('loadUsers')
     }
   }
 }

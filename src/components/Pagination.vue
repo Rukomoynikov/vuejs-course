@@ -8,7 +8,7 @@
       class="pagination-previous"
       @click="previousPage">Назад</a>
     <a
-      v-if="value == pagesCount"
+      v-if="pagesCount - 1 > value"
       class="pagination-next"
       @click="nextPage">Вперёд</a>
     <ul class="pagination-list">
